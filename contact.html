@@ -7,6 +7,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" type="text/css" />
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
     <meta name="viewport" content="width=device-width, initial-scale-1">
+
+    <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("user_PisMKJDTsgwTMDGU6qDdp");
+   });
+
+      function sendMail (params) {
+      var templateParams = {
+    name: 'David',
+    emailaddress: 'paisitadc8@gmail.com',
+    projectsummary: 'Check this out!'
+      };
+ 
+emailjs.send('service_2r9e394', 'template_v2wehr4', templateParams)
+    .then(function(response) {
+       console.log('SUCCESS!', response.status, response.text);
+    }, function(error) {
+       console.log('FAILED...', error);
+    });
+   }
+</script>
 </head>
 
 <body>
@@ -58,7 +82,7 @@
                     <input type="text" name="name" class="form-control" id="fullname" placeholder="Name" required/>
                     <input type="text" name="emailaddress" class="form-control" id="emailaddress" placeholder="Email" required/>
                     <textarea rows="5" name="projectsummary" class="form-control" id="projectsummary" placeholder="Project Description" required></textarea>
-                    <button type="submit" class="btn btn-secondary center-block">Send Project Request</button>
+                    <button on click= 'sendMail()' type="submit" class="btn btn-secondary center-block">Send Project Request</button>
                 </form>
             </div>
         </div>
@@ -92,5 +116,4 @@
         </div>
     </footer>
 </body>
-
 </html>
